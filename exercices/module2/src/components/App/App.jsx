@@ -1,16 +1,21 @@
-import Button from 'components/Button/Button';
+import useLocalStorage from 'hooks/useLocalStorage';
 import Display from 'components/Display/Display';
-import { useState } from 'react';
+import Button from 'components/Button/Button';
+
+
+const STORAGE_COUNTER_KEY = "counter";
 
 const App = () => {
-  const [ counter, setCounter ] = useState(0)
 
-  const changeCount = (delta) => setCounter(counter + delta)
-  
+  const [counter, setCounter] = useLocalStorage(STORAGE_COUNTER_KEY, 0)
+
+  const changeCount = (delta) => {
+    setCounter(counter + delta)
+  }
+
   return (
     <div>
-      <Display counter={counter}/>
-
+      <Display counter={counter} />
       <Button
         changeCount={changeCount}
         delta={1}
@@ -20,14 +25,15 @@ const App = () => {
         changeCount={changeCount}
         delta={-counter}
         text='zero'
-      />     
+      />
       <Button
         changeCount={changeCount}
         delta={-1}
         text='minus'
-      />           
+      />
     </div>
   )
+
 }
 
 export default App;
