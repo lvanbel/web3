@@ -1,13 +1,6 @@
-import { useState } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 
 const CreateNew = ({ addNew }) => {
-  const [content, setContent] = useState('');
-  const [author, setAuthor] = useState('');
-  const [info, setInfo] = useState('');
-
-  const handleSubmit = (e) => {};
-
   const onFinish = (values) => {
     addNew({
       ...values,
