@@ -1,0 +1,42 @@
+@hostname = localhost
+@port = 3001
+@host = http://{{hostname}}:{{port}}
+
+### get all jokes
+
+GET {{host}}/api/scores HTTP/1.1
+Accept: application/json
+
+### add a correct score
+
+POST {{host}}/api/scores HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username": "Louis Vanbel",
+    "date": "2023-01-02T15:49:27.457+00:00",
+    "score": 8,
+    "joke": "6461f476d9a9da9dbeade34e"
+}
+
+### add a wrong score
+
+POST {{host}}/api/scores HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username": "LV",
+    "date": "2023-01-02T15:49:27.457+00:00",
+    "score": 0,
+    "joke": "6461f476d9a9da9dbeade34e"
+}
+
+### add a wrong score
+
+POST {{host}}/api/scores HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{}
