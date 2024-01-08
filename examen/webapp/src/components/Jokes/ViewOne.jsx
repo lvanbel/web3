@@ -6,6 +6,12 @@ const ViewOne = ({ joke }) => {
 
   const { getJokeWithScores, createScore } = useContext(JokeContext);
 
+  const [form] = Form.useForm();
+
+  if (!joke) {
+    return <div>Loading...</div>;
+  }
+
   const jokeWithScores = getJokeWithScores(joke.id);
 
   const onFinish = (values) => {
@@ -14,8 +20,9 @@ const ViewOne = ({ joke }) => {
       date: Date.now(),
       joke: joke.id
     });
-  };
 
+    form.resetFields();
+  };
 
   return (
     <div>
@@ -30,7 +37,7 @@ const ViewOne = ({ joke }) => {
         ))}
       </ul>
 
-      <Form name="newScore" onFinish={onFinish}>
+      <Form form={form} name="newScore" onFinish={onFinish}>
         <Form.Item
           label="username"
           name="username"
@@ -55,7 +62,7 @@ const ViewOne = ({ joke }) => {
             },
           ]}
         >
-          <InputNumber />
+          <InputNumber min={0} max={10} />
         </Form.Item>
 
         <Form.Item>

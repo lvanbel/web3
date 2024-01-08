@@ -15,7 +15,8 @@ const App = () => {
     ? jokes.find((joke) => joke.id === match.params.id)
     : undefined;
 
-  console.log(joke);
+  console.log("App jokes : ", jokes);
+  console.log("App match : ", match);
 
   return (
     <div>

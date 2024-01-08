@@ -29,6 +29,9 @@ const ProviderWrapper = (props) => {
         }, []
     )
 
+    console.log("context jokes : ", jokes);
+    console.log("context scores : ", scores);
+
     const addScoreCountAndAverageScore = (jokes, scores) => {
         const jokesWithScoreCountAndAverageScore = [...jokes].map(joke => {
             const scoresForJoke = [...scores].filter(score => score.joke === joke.id)
